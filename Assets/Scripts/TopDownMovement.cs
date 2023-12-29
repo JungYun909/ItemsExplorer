@@ -5,6 +5,10 @@ using UnityEngine;
 public class TopDownMovement : MonoBehaviour
 {
 
+    public GameObject frontsprite;
+    public GameObject backsprite;
+    public GameObject sidesprite;
+
     private TopDownCharacterController _controller;
 
     private Vector2 _movementDirection = Vector2.zero;
@@ -34,14 +38,40 @@ public class TopDownMovement : MonoBehaviour
 
         if (Input.GetKeyDown("a") || Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            transform.localScale = new Vector3(1, 1, 1);
+
+            sidesprite.SetActive(true);
+            backsprite.SetActive(false);
+            frontsprite.SetActive(false);
+
+            sidesprite.transform.localScale = new Vector3(1, 1, 1);
             Debug.Log("왼쪽");
 
         }
         else if (Input.GetKeyDown("d") || Input.GetKeyDown(KeyCode.RightArrow))
         {
-            transform.localScale = new Vector3(-1, 1, 1);
+            sidesprite.SetActive(true);
+            backsprite.SetActive(false);
+            frontsprite.SetActive(false);
+            sidesprite.transform.localScale = new Vector3(-1, 1, 1);
             Debug.Log("오른쪽");
+
+        }
+
+        else if (Input.GetKeyDown("s") || Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            frontsprite.SetActive(true);
+            sidesprite.SetActive(false);
+            backsprite.SetActive(false);
+            Debug.Log("아래");
+
+        }
+
+        else if (Input.GetKeyDown("w") || Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            frontsprite.SetActive(false);
+            sidesprite.SetActive(false);
+            backsprite.SetActive(true);
+            Debug.Log("위");
 
         }
 
